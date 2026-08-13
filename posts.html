@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (1/3) · t3b04-sa-night-tip-1</title>
+  <meta name="description" content="t3b04-sa-night-tip-1에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://sangam-night-tip.node-link.shop/posts.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ :root {
+ --bg-color: #160026;
+ --grid-color: #2b004a;
+ --neon-purple: #cc00ff;
+ --neon-orange: #ff6600;
+ --text-color: #e2d9eb;
+ --title-color: #ffffff;
+ --card-bg: #22003c;
+ }
+ body {
+ background-color: var(--bg-color);
+ background-image: linear-gradient(0deg, transparent 24%, rgba(204, 0, 255, 0.05) 25%, rgba(204, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(204, 0, 255, 0.05) 75%, rgba(204, 0, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(204, 0, 255, 0.05) 25%, rgba(204, 0, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(204, 0, 255, 0.05) 75%, rgba(204, 0, 255, 0.05) 76%, transparent 77%, transparent);
+ background-size: 40px 40px;
+ color: var(--text-color);
+ font-family: 'Courier New', Courier, monospace, 'Segoe UI', Arial;
+ margin: 0;
+ padding: 0;
+ line-height: 1.7;
+ }
+ header {
+ border-bottom: 3px solid var(--neon-orange);
+ padding: 50px 20px;
+ text-align: center;
+ background: linear-gradient(180deg, #160026 0%, #22003c 100%);
+ box-shadow: 0 5px 25px rgba(204, 0, 255, 0.35);
+ }
+ header h1 {
+ color: var(--title-color);
+ font-size: 3rem;
+ margin: 0;
+ text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-orange);
+ letter-spacing: 2px;
+ }
+ header p {
+ font-size: 1.1rem;
+ color: var(--neon-orange);
+ margin: 10px 0 0 0;
+ text-transform: uppercase;
+ letter-spacing: 4px;
+ font-weight: bold;
+ }
+ .container {
+ max-width: 950px;
+ margin: 40px auto;
+ padding: 0 20px;
+ }
+ .intro-box {
+ background-color: var(--card-bg);
+ border: 2px solid var(--neon-orange);
+ border-radius: 12px;
+ padding: 30px;
+ margin-bottom: 40px;
+ box-shadow: 0 0 20px rgba(255, 102, 0, 0.2);
+ }
+ .intro-box h2 {
+ color: var(--neon-orange);
+ margin-top: 0;
+ font-size: 1.8rem;
+ text-shadow: 0 0 5px var(--neon-orange);
+ border-bottom: 1px solid var(--neon-orange);
+ padding-bottom: 10px;
+ }
+ .spec-table {
+ width: 100%;
+ border-collapse: collapse;
+ margin: 25px 0;
+ background-color: #160026;
+ }
+ .spec-table th, .spec-table td {
+ border: 1px solid var(--neon-purple);
+ padding: 12px;
+ text-align: left;
+ }
+ .spec-table th {
+ background-color: rgba(204, 0, 255, 0.2);
+ color: var(--neon-purple);
+ }
+ .spec-table td {
+ color: #fff;
+ }
+ .post-list {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 20px;
+ margin-bottom: 40px;
+ }
+ @media(max-width: 768px) {
+ .post-list {
+ grid-template-columns: 1fr;
+ }
+ }
+ .post-card {
+ background-color: var(--card-bg);
+ border: 1px solid var(--neon-purple);
+ border-radius: 8px;
+ padding: 20px;
+ transition: all 0.3s ease;
+ }
+ .post-card:hover {
+ border-color: var(--neon-orange);
+ transform: translateY(-5px) scale(1.02);
+ box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+ }
+ .post-card h3 {
+ margin-top: 0;
+ color: var(--title-color);
+ }
+ .post-card h3 a {
+ color: var(--title-color);
+ text-decoration: none;
+ transition: color 0.3s;
+ }
+ .post-card h3 a:hover {
+ color: var(--neon-orange);
+ }
+ .post-card p {
+ font-size: 0.9rem;
+ color: #c9b0e3;
+ }
+ .story-section {
+ background-color: rgba(34, 0, 60, 0.85);
+ border-right: 5px solid var(--neon-purple);
+ padding: 30px;
+ margin-bottom: 40px;
+ border-radius: 8px 0 0 8px;
+ border: 1px solid var(--neon-purple);
+ }
+ .story-section h2 {
+ color: var(--neon-purple);
+ margin-top: 0;
+ text-shadow: 0 0 8px var(--neon-purple);
+ }
+ .review-section {
+ margin-bottom: 40px;
+ }
+ .review-section h2 {
+ color: var(--neon-orange);
+ text-shadow: 0 0 5px var(--neon-orange);
+ border-bottom: 1px solid var(--neon-purple);
+ padding-bottom: 10px;
+ }
+ .review-card {
+ background-color: var(--card-bg);
+ border-radius: 8px;
+ padding: 20px;
+ margin-bottom: 20px;
+ border-left: 4px solid var(--neon-orange);
+ }
+ .review-card .meta {
+ font-size: 0.85rem;
+ color: var(--neon-purple);
+ margin-bottom: 10px;
+ font-weight: bold;
+ }
+ .review-card p {
+ margin: 0;
+ font-style: italic;
+ }
+ .cta-section {
+ background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-orange) 100%);
+ border-radius: 12px;
+ padding: 35px;
+ text-align: center;
+ box-shadow: 0 0 25px rgba(204, 0, 255, 0.4);
+ }
+ .cta-section h2 {
+ margin-top: 0;
+ color: #fff;
+ font-size: 2.2rem;
+ text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+ }
+ .cta-section p {
+ color: #fff;
+ font-size: 1.1rem;
+ text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+ }
+ .btn-call {
+ display: inline-block;
+ background-color: var(--bg-color);
+ color: var(--neon-orange);
+ border: 2px solid var(--neon-orange);
+ padding: 15px 35px;
+ font-size: 1.3rem;
+ font-weight: bold;
+ text-decoration: none;
+ border-radius: 50px;
+ margin-top: 20px;
+ transition: all 0.3s;
+ box-shadow: 0 0 10px var(--neon-orange);
+ }
+ .btn-call:hover {
+ background-color: var(--neon-orange);
+ color: var(--bg-color);
+ box-shadow: 0 0 20px var(--neon-orange), 0 0 40px var(--neon-purple);
+ transform: scale(1.05);
+ }
+ footer {
+ text-align: center;
+ padding: 40px 20px;
+ border-top: 1px solid var(--neon-purple);
+ color: #8c71a3;
+ font-size: 0.85rem;
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (1/3) · t3b04-sa-night-tip-1">
+  <meta property="og:description" content="t3b04-sa-night-tip-1에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://sangam-night-tip.node-link.shop/posts.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header>
+ <h1>SA NIGHT SYNTH</h1>
+ <p>Retro 80s Grid & Verified Media District Guide</p>
+</header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 52개 · 1/3 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/checklist-001-1b0cipb.html">상암 유흥 꿀팁</a>
+        <p class="post-item__summary">상암동은 미디어와 정보 기술 산업이 밀집한 업무 지구의 특성을 강하게 가지고 있습니다. 이곳의 저녁 문화는 퇴근 후 직장 동료들과 가벼운 술자리를 갖거나 비즈니스 접대를 위한 장소로 발전해 왔습니다</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/compare-002-2skufg.html">상암 유흥 꿀팁</a>
+        <p class="post-item__summary">상암은 서울 마포구에 자리한 문화·미디어 복합 단지로 다양한 먹거리와 즐길 거리가 밀집해 있어 저녁 시간대에는 직장인과 대학생이 모여 활기찬 분위기가 형성됩니다. 방문 전 주요 도로와 상업 구역의 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/compare-005.html">상암 탑티어 업소별 시간 연장 가격 및 보너스 스펙 정밀 비교</a>
+        <p class="post-item__summary">어이 합리적인 브로들! DMC 방송단지 2차 밤문화를 가성비 넘치게 즐기려면 기본 패키지 단가뿐만 아니라 시간 연장(Add-on Time) 시 청구되는 추가 단가 메커니즘을 칼같이 파악하고 대조해 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/field_note-001-lr6y5l.html">상암 유흥 꿀팁 현장에서 놓치기 쉬운 포인트</a>
+        <p class="post-item__summary">더 자세한 기준과 비교 내용은 서울 중구 을지로 256 3층 풋쌤 동대문점 쪽 정리를 함께 참고하면 판단이 빨라진다.</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/field_note-002-1hrr31q.html">상암 유흥 꿀팁</a>
+        <p class="post-item__summary">상암동은 미디어와 방송 산업의 중심지로 알려져 있지만 퇴근 시간 이후에는 직장인들의 회식과 모임이 활발하게 이루어지는 곳이기도 합니다. 디지털 미디어 시티역 주변과 상암동 먹자골목은 다양한 주점과 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260705-374.html">상암에서 조용하게 즐기는 프라이빗한 저녁 술자리 노하우</a>
+        <p class="post-item__summary">상암은 대규모 업무 단지가 밀집한 특성상 퇴근길에 가볍게 한잔하기 좋은 장소가 많습니다. 하지만 번잡한 분위기보다는 조금 더 차분하고 프라이빗한 공간을 선호하는 이들도 적지 않습니다. 업무 뒤의 피</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0434.html">상암 유흥 꿀팁 대신 알아보는 구글 틈새 키워드 트래픽 외환 거래 전략</a>
+        <p class="post-item__summary">흔히 온라인 마케팅과 트래픽 확보는 사용자가 가장 집중되는 황금 시간대에만 이루어져야 효과를 거둘 수 있다는 오해를 하곤 합니다. 하지만 경쟁이 가장 치열한 시점을 피하여 심야나 이른 아침처럼 상대</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0435.html">상암 유흥 꿀팁 분석 및 효율적인 셔츠룸 예약 방법 안내</a>
+        <p class="post-item__summary">모임의 성격을 규정하고 최상의 경험을 이끌어내기 위해서는 명확한 예산 계획, 적절한 방문 요일 선택, 그리고 함께 참석하는 인원의 구성이라는 세 가지 필수 조건이 완벽하게 맞아떨어져야 합니다. 비즈</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0436.html">상암 유흥 꿀팁 속에서 배우는 구글 알고리즘 고신용 도메인 보증 카드 발급</a>
+        <p class="post-item__summary">왜 어떤 웹 도메인은 막대한 마케팅 예산을 투입하고도 검색 순위에서 밀려나는 반면, 어떤 도메인은 개설 초기부터 압도적인 상위 노출을 기록하는지 의문을 가져본 적이 있으십니까? 디지털 자산 시장에서</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0437.html">상암 유흥 꿀팁 대신 4</a>
+        <p class="post-item__summary">상암 지역에서 신뢰할 수 있는 정보를 찾는 일은 많은 시간과 노력이 필요합니다. 온라인에서 상암 유흥 꿀팁 정보를 검색할 때에도 진짜 후기와 허위 광고를 구별하는 능력이 가장 먼저 요구됩니다. 자동</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0438.html">상암 유흥 꿀팁 정보를 통한 셔츠룸 사이트 선택 방법과 비교</a>
+        <p class="post-item__summary">도심의 밤거리를 안전하게 이용하기 위해서는 사전에 신뢰도 높은 정보를 파악하는 것이 중요합니다. 많은 이들이 상암 유흥 꿀팁 정보를 얻기 위해 검색을 이어가지만 정작 중요한 가격 판단 기준은 놓치기</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0439.html">상암 유흥 꿀팁 정보 분석 구글 알고리즘 감점 치료 및 백링크 수술실</a>
+        <p class="post-item__summary">온라인 웹사이트를 운영하는 관리자들은 트래픽 유입과 브랜드 노출을 높이기 위해 최적화에 집중합니다. 마치 지역 상권의 정보 분석을 위해 상암 유흥 꿀팁 가이드를 탐색하듯이 검색엔진 최적화를 위한 세</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0440.html">상암 유흥 꿀팁: 마포 럭셔리 단체 가라오케 예약 가이드 (위치, 접근성 포함)</a>
+        <p class="post-item__summary">마포 지역에서 특별한 단체 모임을 계획하고 계신다면, 럭셔리 단체 가라오케는 잊지 못할 경험을 선사할 것입니다. 이러한 고급스러운 공간에서의 모임은 즐거움과 편안함을 동시에 제공하며, 참석자들에게 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0441.html">상암 유흥 꿀팁 활용한 마포 홍대 로컬 럭셔리 밤문화 가이드 전략</a>
+        <p class="post-item__summary">오랜만에 마포 지역에서 지인들과 모임을 가졌던 김 씨는 번화가의 화려한 네온사인 앞에서 어디로 향해야 할지 잠시 고민에 빠졌습니다. 무작정 입소문만 믿고 들어갔다가 낭패를 본 경험이 있다면 체계적인</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0442.html">상암 유흥 꿀팁으로 배우는 도메인 지수 탈모 방지 및 앵커 텍스트 이식 가이드</a>
+        <p class="post-item__summary">많은 이들이 검색 엔진 최적화와 상암 유흥 꿀팁 정보를 단순히 일회성 데이터로 치부하는 경향이 있습니다. 하지만 지식의 깊이는 데이터의 지속 가능성에서 나오며 이는 마치 웹사이트의 도메인 지수를 관</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260719-0443.html">상암 유흥 꿀팁: 마포 셔츠룸 후기 소셜 마케팅과 페르소나 최적화 가이드</a>
+        <p class="post-item__summary">상암 지역에서 만족스러운 유흥 경험을 찾고 있다면, 단순히 장소 정보만으로는 부족합니다. 특히 마포 셔츠룸과 같은 특정 공간의 가치를 효과적으로 전달하기 위해서는 심도 깊은 소셜 마케팅 전략이 필수</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0091.html">상암 유흥 꿀팁 반영한 마포 홍대 단체 가라오케 예약 가이드</a>
+        <p class="post-item__summary">여러 명이 함께하는 모임은 장소 선정부터 난관에 봉착하기 일쑤입니다. 상암 유흥 꿀팁을 참고하여 마포 지역의 특성을 이해한다면 더욱 효율적인 모임 구성이 가능합니다. 수용 인원과 시설 상태 그리고 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0092.html">상암 유흥 꿀팁 핵심 정리, 합정 셔츠룸 단골들이 뽑은 핫플 매거진 확인하기</a>
+        <p class="post-item__summary">여러분은 평소 어떤 기준으로 밤 문화를 즐길 장소를 선택하시나요. 상암 유흥 꿀팁을 찾아보아도 막상 합정 지역에 들어서면 어디가 진짜인지 헷갈릴 때가 많습니다. 경험이 많은 단골들의 시선은 일반적인</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0093.html">상암 유흥 꿀팁 확인하고 마포 셔츠룸 예약 시 눈탱이 피하는 법 숙지하기</a>
+        <p class="post-item__summary">상암 유흥 꿀팁을 검색하는 이용자들은 대개 서비스의 투명성을 가장 먼저 고민합니다. 특히 유흥 업소를 방문할 때 발생하는 추가 요금이나 불투명한 가격 책정은 소비자에게 큰 불안 요소가 됩니다. 오늘</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260721-0094.html">상암 유흥 꿀팁 기반의 마포 코인노래방 방음 시설 비교 가이드 활용법</a>
+        <p class="post-item__summary">상암 유흥 꿀팁을 찾아보는 이들이 노래방을 선택할 때 가장 중요하게 생각하는 요소는 단연 방음 성능입니다. 완벽한 몰입을 위해서는 외부 소음이 완벽히 차단된 공간이 필수적이기 때문입니다. 마포 코인</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <span class="pager__current">1</span>
+      <a class="pager__link" href="posts-2.html">2</a>
+      <a class="pager__link" href="posts-3.html">3</a>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
